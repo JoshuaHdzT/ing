@@ -34,7 +34,7 @@ dependencies:
   firebase_auth:
   quickalert:
   cloud_firestore:
-  appinio_video_player: ^1.2.2
+  appinio_video_player:
   youtube_player_flutter:
   google_fonts:
   awesome_dialog:
