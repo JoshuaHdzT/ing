@@ -1,0 +1,9 @@
+[
+  { "pregunta": "10", "resp": "Ten" },
+  { "pregunta": "100", "resp": "One Hundred" },
+  { "pregunta": "1000", "resp": "One Thusdan" },
+  { "pregunta": "1,2,3,4,5", "resp": "One,Two,Three,For,Five" },
+  { "pregunta": "6,7,8,9,11", "resp": "Six,Seven,Eigth,Nine,Eleven" },
+  { "pregunta": "5,4,3,2,1", "resp": "Five,For,Three,Two,One" },
+  { "pregunta": "11,9,8,7,6", "resp": "Eleven,Nine,Eigth,Seven,Six" }
+]

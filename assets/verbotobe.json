@@ -1,0 +1,9 @@
+[
+  { "tobepregunta": "Selecciona la opcion correcta: ______is my mother", "respues": "She" },
+  { "tobepregunta": "Selecciona la opcion correcta: ______am a farmer", "respues": "I" },
+  { "tobepregunta": "Selecciona la opcion correcta: They _____very goods doctors", "respues": "Are" },
+  { "tobepregunta": "Selecciona la opcion correcta: _____ are very inteligent", "respues": "We" },
+  { "tobepregunta": "¿Cuál es la forma correcta del Verb To be?", "respues": "Subject+verbTobe+Complement" },
+  { "tobepregunta": "Es la forma incorrecta del Verb To be", "respues": "VerbTobe+Subject+Complement" },
+  { "tobepregunta": "Traducción de: 'She is very thirsty'", "respues": "Ella está muy sedienta" }
+]
