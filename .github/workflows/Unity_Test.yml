@@ -1,0 +1,40 @@
+name: Lenguage4U CI - Unit Testv2.1
+
+on:
+  push:
+    branches:
+      - main
+      - Temas
+  pull_request:
+    branches:
+      - main
+      - Temas
+
+jobs:
+  unit-tests:
+    name: Unit Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the branch
+        uses: actions/checkout@v3
+      - name: Install flutter 
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+      
+      - name: cls
+        run: flutter clean
+      - name: Get packages
+        run: flutter pub get
+      - name: upg
+        run: dart pub upgrade
+      - name: Build runner
+        run: flutter pub run build_runner build
+      - name: Run unit tests
+        run: flutter test --coverage
+      - name: Publish coverage to codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{secrets.CODECOV_TOKEN}}
+          file: ./coverage/lcov.info
