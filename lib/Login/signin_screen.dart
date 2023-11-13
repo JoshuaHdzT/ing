@@ -9,7 +9,7 @@ import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 //import '../reusable_widgets/reusable_widget.dart';
 
-import 'package:ing/Pages/homePage.dart';
+//import 'package:ing/Pages/homePage.dart';
 import '../utils/color_utils.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -35,12 +35,12 @@ class _SignInScreenState extends State<SignInScreen> {
             if (cursor.get('Password') == _passwordTextController.text) {
               print('Acceso correcto');
               if (cursor != null) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomePage(),
-                  ),
-                );
+                //Navigator.push(
+               //   context,
+                 // MaterialPageRoute(
+                   // builder: (context) => const HomePage(),
+                //  ),
+               // );
               } else {
                 QuickAlert.show(
                   context: context,

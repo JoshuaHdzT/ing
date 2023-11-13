@@ -14,18 +14,12 @@ class HomePage extends StatefulWidget {
 
   const HomePage({super.key});
 
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-
-  List<String> names = ["Colores", "Numeros", "Pronombres"];
-  List<String> imgs = [
-    "https://www.consumer.es/app/uploads/fly-images/262266/Mezclar-colores-1200x550-cc.jpg",
-    "https://www.letrasnumeros.com/storage/2022/06/numeros-letras.png",
-    "https://img.freepik.com/vector-gratis/pack-avatares-diferentes-personas_23-2148455572.jpg"
-  ];
 
 
   @override
