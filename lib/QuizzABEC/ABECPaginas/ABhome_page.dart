@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ing/Pages/Menu_Tema.dart';
 
-import '../../Pages/homePage.dart';
 import '../../utils/color_utils.dart';
 import 'ABquiz_page.dart';
 import 'ABreview_quiz_page.dart';
@@ -79,8 +78,7 @@ class AbecedarioHomePage extends StatelessWidget {
                       },
                       child: const Text('Start Quiz'),
                       style: OutlinedButton.styleFrom(
-                        primary: Colors.black,
-                        backgroundColor: Theme.of(context).primaryColorLight,
+                        foregroundColor: Colors.black, backgroundColor: Theme.of(context).primaryColorLight,
                         elevation: 4,
                         side: const BorderSide(width: 1),
                       ),
@@ -91,8 +89,7 @@ class AbecedarioHomePage extends StatelessWidget {
                       },
                       child: const Text('Review Quizz'),
                       style: OutlinedButton.styleFrom(
-                        primary: Colors.black,
-                        backgroundColor: Theme.of(context).primaryColorLight,
+                        foregroundColor: Colors.black, backgroundColor: Theme.of(context).primaryColorLight,
                         elevation: 4,
                         side: const BorderSide(width: 1),
                       ),
@@ -107,8 +104,7 @@ class AbecedarioHomePage extends StatelessWidget {
                 },
                 child: const Text('Exit'),
                 style: OutlinedButton.styleFrom(
-                  primary: Colors.black,
-                  backgroundColor: Theme.of(context).primaryColorLight,
+                  foregroundColor: Colors.black, backgroundColor: Theme.of(context).primaryColorLight,
                   elevation: 4,
                   side: const BorderSide(width: 1),
                 ),
