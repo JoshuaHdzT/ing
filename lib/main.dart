@@ -1,14 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:ing/Pages/HomePage.dart';
-import 'package:ing/Pages/Login.dart';
+//import 'package:ing/Pages/Login.dart';
 import 'package:flutter/material.dart';
-import 'package:ing/Pages/Home_Pagee.dart';
+//import 'package:ing/Pages/Home_Pagee.dart';
 import 'package:ing/Pages/game/game.dart';
-import 'package:ing/Pages/nv.dart';
+//import 'package:ing/Pages/nv.dart';
 import 'package:ing/Login/signin_screen.dart';
 
-import 'Pages/Menu_Tema.dart';
-import 'Pages/Videos.dart';
+//import 'Pages/Menu_Tema.dart';
+//import 'Pages/Videos.dart';
 
 
 void main() async{
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           home: const SignInScreen(),
       routes: {
        // 'menu': (context) => MenuTema(idTem: '', Tem: '', id: '',),
-        //'home': (context) => HomePage(),
+        'home': (context) => HomePage(),
         'game': (context) => Game(),
 
       },
