@@ -3,12 +3,10 @@ name: Lenguage4U CI - Unit Testv2.1
 on:
   push:
     branches:
-      - main
-      - Temas
+      - master
   pull_request:
     branches:
-      - main
-      - Temas
+      - master
 
 jobs:
   unit-tests:
