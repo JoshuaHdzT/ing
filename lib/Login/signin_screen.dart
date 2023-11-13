@@ -9,7 +9,7 @@ import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 //import '../reusable_widgets/reusable_widget.dart';
 
-import '../Pages/homePage.dart';
+import '../Pages/homePage.dart' show HomePage;
 import '../utils/color_utils.dart';
 
 class SignInScreen extends StatefulWidget {
