@@ -38,6 +38,8 @@ dependencies:
   youtube_player_flutter:
   google_fonts:
   awesome_dialog:
+  meta:
+  watcher:
   intl:
 
   # The following adds the Cupertino Icons font to your application.
