@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 
-import '../../Pages/homePage.dart';
+
 import '../Clases/question.dart';
 import '../Clases/quiz.dart';
 import 'home_page.dart';
@@ -227,8 +227,7 @@ class _QuizPageState extends State<QuizPage> {
             },
             child: const Text('Exit'),
             style: OutlinedButton.styleFrom(
-              primary: Colors.black,
-              backgroundColor: Theme.of(context).primaryColorLight,
+              foregroundColor: Colors.black, backgroundColor: Theme.of(context).primaryColorLight,
               elevation: 4,
               side: const BorderSide(width: 1),
             ),

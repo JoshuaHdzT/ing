@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ing/Pages/FiresTore/TemasNombre.dart';
-import 'package:ing/Pages/Login.dart';
+//import 'package:ing/Pages/FiresTore/TemasNombre.dart';
+//import 'package:ing/Pages/Login.dart';
 import 'package:ing/Pages/Menu_Tema.dart';
 
 import '../utils/color_utils.dart';
-import 'Videos.dart';
+//import 'Videos.dart';
 
 //stf
 
@@ -118,6 +118,6 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
-    return const Placeholder();
+    //return const Placeholder();
   }
 }
