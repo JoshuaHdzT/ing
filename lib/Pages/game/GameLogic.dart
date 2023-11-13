@@ -1,5 +1,4 @@
-
-import 'dart:collection';
+//import 'dart:collection';
 
 import 'package:flutter/material.dart';
 
@@ -7,8 +6,8 @@ class GameLogic {
   final String hiddenCard = 'assets/images/box.png';
   List<String>? cardsImg;
   String level = '';
-  String idTem= '';
-  String Tem= '';
+  String idTem = '';
+  String Tem = '';
 
   late List<String> card_list = [];
 
@@ -85,7 +84,7 @@ class GameLogic {
         'assets/images/yellow.png',
         'assets/images/yellow.png',
       ];
-    }else if (difficult == 'Colores') {
+    } else if (difficult == 'Colores') {
       cardCount = 16;
       axiCount = 4;
       card_list = [
@@ -148,7 +147,7 @@ class GameLogic {
         'assets/images/letras/O.png',
         'assets/images/letras/O.png',
       ];
-    }else {
+    } else {
       cardCount = 16;
       axiCount = 4;
       card_list = [

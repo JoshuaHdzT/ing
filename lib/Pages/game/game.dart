@@ -1,11 +1,11 @@
 import 'dart:async';
-import 'dart:developer';
+//import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:ing/Pages/game/GameLogic.dart';
 import 'package:ing/Pages/game/widgets/board.dart';
 import 'package:ing/shared/utils.dart' as utils;
-import 'package:ing/Pages/game/widgets/dialog.dart';
+//import 'package:ing/Pages/game/widgets/dialog.dart';
 
 import '../../utils/color_utils.dart';
 import '../Menu_Tema.dart';
@@ -69,27 +69,27 @@ class _GameState extends State<Game> {
         await showDialog(
             context: context,
             builder: (_) => AlertDialog(
-              title: const Text('Seguro que quiere salir de la partida?'),
-              actions: [
-                ElevatedButton(
-                    style:
-                    ElevatedButton.styleFrom(primary: utils.redColor),
-                    onPressed: () {
-                      willLeave = true;
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text('Yes')),
-                TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      startTimer(context);
-                    },
-                    child: const Text(
-                      'No',
-                      style: TextStyle(color: utils.blueColor),
-                    ))
-              ],
-            ));
+                  title: const Text('Seguro que quiere salir de la partida?'),
+                  actions: [
+                    ElevatedButton(
+                        style:
+                            ElevatedButton.styleFrom(backgroundColor: utils.redColor),
+                        onPressed: () {
+                          willLeave = true;
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text('Yes')),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          startTimer(context);
+                        },
+                        child: const Text(
+                          'No',
+                          style: TextStyle(color: utils.blueColor),
+                        ))
+                  ],
+                ));
         return willLeave;
       },
       child: Scaffold(
@@ -98,15 +98,14 @@ class _GameState extends State<Game> {
         ),
         //backgroundColor: Colors.blueAccent,
         body: Container(
-
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
-                hexStringToColor("CB2B93"),
-                hexStringToColor("9546C4"),
-                hexStringToColor("5E61F4")
-              ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+            hexStringToColor("CB2B93"),
+            hexStringToColor("9546C4"),
+            hexStringToColor("5E61F4")
+          ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
           child: Column(children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -136,7 +135,8 @@ class _GameState extends State<Game> {
 
                             _game.cardsImg![index] = _game.card_list[index];
 
-                            _game.matchCheck.add({index: _game.card_list[index]});
+                            _game.matchCheck
+                                .add({index: _game.card_list[index]});
 
                             if (_game.matchCheck.length == 2) {
                               if (_game.matchCheck[0].values.first ==
@@ -151,17 +151,17 @@ class _GameState extends State<Game> {
                                   timer.cancel();
                                 }
                               } else {
-                                Future.delayed(const Duration(milliseconds: 500),
-                                        () {
-                                      setState(() {
-                                        _game.cardsImg![_game.matchCheck[0].keys
-                                            .first] = _game.hiddenCard;
-                                        _game.cardsImg![_game.matchCheck[1].keys
-                                            .first] = _game.hiddenCard;
+                                Future.delayed(
+                                    const Duration(milliseconds: 500), () {
+                                  setState(() {
+                                    _game.cardsImg![_game.matchCheck[0].keys
+                                        .first] = _game.hiddenCard;
+                                    _game.cardsImg![_game.matchCheck[1].keys
+                                        .first] = _game.hiddenCard;
 
-                                        _game.matchCheck.clear();
-                                      });
-                                    });
+                                    _game.matchCheck.clear();
+                                  });
+                                });
                               }
                             }
                           });
@@ -197,9 +197,15 @@ class _GameState extends State<Game> {
                 child: const Text('Ir a inicio'),
                 onPressed: () {
                   // Navigator.of(context).pop();
-                  Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => MenuTema(idTem: _game.idTem, Tem: _game.Tem,
-          ),),);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MenuTema(
+                        idTem: _game.idTem,
+                        Tem: _game.Tem,
+                      ),
+                    ),
+                  );
                 },
               )
             ],

@@ -7,10 +7,11 @@ import 'package:quickalert/widgets/quickalert_dialog.dart';
 //import 'package:secappen/HomePage/homePage.dart';
 //import 'package:secappen/Login/signup_screen.dart';
 
-import '../reusable_widgets/reusable_widget.dart';
+//import '../reusable_widgets/reusable_widget.dart';
 
 import '../Pages/homePage.dart';
 import '../utils/color_utils.dart';
+
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
 
@@ -18,59 +19,51 @@ class SignInScreen extends StatefulWidget {
   _SignInScreenState createState() => _SignInScreenState();
 }
 
-
-
 class _SignInScreenState extends State<SignInScreen> {
-
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
 
+  validarDatos() async {
+    try {
+      CollectionReference ref = FirebaseFirestore.instance.collection('Users');
+      QuerySnapshot usuario = await ref.get();
 
-  validarDatos() async{
-    try{
-      CollectionReference ref=FirebaseFirestore.instance.collection('Users');
-      QuerySnapshot usuario=await ref.get();
-
-      if(usuario.docs.length !=0){
-    for(var cursor in usuario.docs){
-      if(cursor.get('Username')==_emailTextController.text){
-        //print('Usuario encontrado');
-        if(cursor.get('Password')==_passwordTextController.text){
-          print('Acceso correcto');
-          if(cursor != null){
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => HomePage(),
-              ),
-            );
-
-          }else{
-            QuickAlert.show(
-              context: context,
-              type: QuickAlertType.error,
-              title: 'Intente de Nuevo',
-              text: 'Usuario o Contraseña incorrecto',
-            );
+      if (usuario.docs.length != 0) {
+        for (var cursor in usuario.docs) {
+          if (cursor.get('Username') == _emailTextController.text) {
+            //print('Usuario encontrado');
+            if (cursor.get('Password') == _passwordTextController.text) {
+              print('Acceso correcto');
+              if (cursor != null) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomePage(),
+                  ),
+                );
+              } else {
+                QuickAlert.show(
+                  context: context,
+                  type: QuickAlertType.error,
+                  title: 'Intente de Nuevo',
+                  text: 'Usuario o Contraseña incorrecto',
+                );
+              }
+            } else {
+              QuickAlert.show(
+                context: context,
+                type: QuickAlertType.error,
+                title: 'Intente de Nuevo',
+                text: 'Contraseña incorrecto',
+              );
+            }
           }
-        }else{
-          QuickAlert.show(
-            context: context,
-            type: QuickAlertType.error,
-            title: 'Intente de Nuevo',
-            text: 'Contraseña incorrecto',
-          );
         }
       }
-    }
-      }
-
-    }catch(e){
-      print('ERROR'+e.toString());
+    } catch (e) {
+      print('ERROR' + e.toString());
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -80,10 +73,10 @@ class _SignInScreenState extends State<SignInScreen> {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
-              hexStringToColor("CB2B93"),
-              hexStringToColor("9546C4"),
-              hexStringToColor("5E61F4")
-            ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+          hexStringToColor("CB2B93"),
+          hexStringToColor("9546C4"),
+          hexStringToColor("5E61F4")
+        ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.fromLTRB(
@@ -91,23 +84,32 @@ class _SignInScreenState extends State<SignInScreen> {
             child: Column(
               children: <Widget>[
                 //logoWidget("assets/images/logo.png"),
-                Padding(padding: const EdgeInsets.symmetric(vertical: 15),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15),
                   child: ClipOval(
                     child: Image(
-                      image : AssetImage('assets/images/logo.jpeg'),
+                      image: AssetImage('assets/images/logo.jpeg'),
                       //Image.network(
                       //   "https://cdn-icons-png.flaticon.com/512/6335/6335600.png",
                       width: 250,
                       height: 240,
-                      fit: BoxFit.fill,),
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
 
-                SizedBox(height: 20,),
-                Text("Hola", style: TextStyle(fontSize: 28,color: Colors.white),
+                SizedBox(
+                  height: 20,
                 ),
-                SizedBox(height: 5,),
-                Text("Listo para Aprender",
+                Text(
+                  "Hola",
+                  style: TextStyle(fontSize: 28, color: Colors.white),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "Listo para Aprender",
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
 
@@ -127,9 +129,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
                 Padding(
                   padding: EdgeInsets.all(20),
-
                   child: TextField(
-
                     style: TextStyle(color: Colors.white),
                     controller: _passwordTextController,
                     obscureText: true,
@@ -139,51 +139,44 @@ class _SignInScreenState extends State<SignInScreen> {
                           borderRadius: BorderRadius.circular(10)),
                       labelText: 'Password',
                       hintText: 'Digite su contraseña',
-
                     ),
                   ),
                 ),
 
-
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text("No tienes cuenta?",
-              style: TextStyle(color: Colors.white70)),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SignUpScreen()));
-            },
-            child: const Text(
-              " Crea una",
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-          ),
-        ],
-      ),
-
-
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("No tienes cuenta?",
+                        style: TextStyle(color: Colors.white70)),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignUpScreen()));
+                      },
+                      child: const Text(
+                        " Crea una",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
 
                 Padding(
-                  padding: EdgeInsets.only(left: 20,top: 50, right: 10),
-                child: Center(
-                  child: AnimatedButton(
-
-                    pressEvent: (){
-                      print('Ingresando');
-                      validarDatos();
-                    },
-
-                     text:'Ingresar',
-                    color: Colors.lightBlueAccent,
+                  padding: EdgeInsets.only(left: 20, top: 50, right: 10),
+                  child: Center(
+                    child: AnimatedButton(
+                      pressEvent: () {
+                        print('Ingresando');
+                        validarDatos();
+                      },
+                      text: 'Ingresar',
+                      color: Colors.lightBlueAccent,
+                    ),
                   ),
                 ),
-                ),
-
-
-
-
 
                 /**
                 SizedBox(
@@ -231,9 +224,4 @@ class _SignInScreenState extends State<SignInScreen> {
       ],
     );
     **/
-
-
-  }
-
-
-
+}

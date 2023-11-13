@@ -15,7 +15,11 @@ class MenuTema extends StatefulWidget {
   final String idTem;
   final String Tem;
 
-  const MenuTema({super.key, required this.idTem, required this.Tem, });
+  const MenuTema({
+    super.key,
+    required this.idTem,
+    required this.Tem,
+  });
 
   @override
   State<MenuTema> createState() => _MenuTemaState(this.idTem, this.Tem);
@@ -26,12 +30,14 @@ class _MenuTemaState extends State<MenuTema> {
   String Tem;
 
   CollectionReference temas = FirebaseFirestore.instance.collection('Temas');
-  _MenuTemaState(this.idTem, this.Tem, );
+  _MenuTemaState(
+    this.idTem,
+    this.Tem,
+  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         title: Text("Aprendiendo " + Tem),
       ),
@@ -84,7 +90,6 @@ class _MenuTemaState extends State<MenuTema> {
                     Navigator.pushNamed(context, 'game', arguments: {
                       'level': value['Nombre'].toString(),
                       'id': idTem,
-
                     });
                   });
                 }
@@ -115,30 +120,50 @@ class _MenuTemaState extends State<MenuTema> {
               onTap: () {
                 if (idTem.isNotEmpty) {
                   temas.doc(idTem).get().then((value) {
-    if (value['Nombre'] == 'Colores') {
-      Navigator.push(context, MaterialPageRoute(builder: (context) =>
-          ColoreQuizHome
-        (idTem: idTem, Tem: value['Nombre'].toString(),),),
-      );
-    }
-    if (value['Nombre'] == 'Números') {
-      Navigator.push(context, MaterialPageRoute(builder: (context) =>
-          NumerosHomePage
-        (idTem: idTem, Tem: value['Nombre'].toString(),),),
-      );
-    }
-    if (value['Nombre'] == 'Abecedario') {
-      Navigator.push(context, MaterialPageRoute(builder: (context) =>
-          AbecedarioHomePage
-        (idTem: idTem, Tem: value['Nombre'].toString(),),),
-      );
-    }
-    if (value['Nombre'] == 'Verbo to be') {
-      Navigator.push(context, MaterialPageRoute(builder: (context) =>
-          TobeHomePage
-        (idTem: idTem, Tem: value['Nombre'].toString(),),),
-      );
-    }
+                    if (value['Nombre'] == 'Colores') {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ColoreQuizHome(
+                            idTem: idTem,
+                            Tem: value['Nombre'].toString(),
+                          ),
+                        ),
+                      );
+                    }
+                    if (value['Nombre'] == 'Números') {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NumerosHomePage(
+                            idTem: idTem,
+                            Tem: value['Nombre'].toString(),
+                          ),
+                        ),
+                      );
+                    }
+                    if (value['Nombre'] == 'Abecedario') {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AbecedarioHomePage(
+                            idTem: idTem,
+                            Tem: value['Nombre'].toString(),
+                          ),
+                        ),
+                      );
+                    }
+                    if (value['Nombre'] == 'Verbo to be') {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TobeHomePage(
+                            idTem: idTem,
+                            Tem: value['Nombre'].toString(),
+                          ),
+                        ),
+                      );
+                    }
                   });
                 }
               },
@@ -151,18 +176,26 @@ class _MenuTemaState extends State<MenuTema> {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
-              hexStringToColor("CB2B93"),
-              hexStringToColor("9546C4"),
-              hexStringToColor("5E61F4")
-            ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+          hexStringToColor("CB2B93"),
+          hexStringToColor("9546C4"),
+          hexStringToColor("5E61F4")
+        ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
         child: SingleChildScrollView(
           child: Column(
             children: [
               ListTile(
                 //leading: Icon(Icons.play_circle, color: Colors.white),
-                leading: CircleAvatar(backgroundImage: AssetImage('assets/images/videos.jpg'),),
-                title: Text('Ver Videos', style: TextStyle(color: Colors.white),),
-                subtitle: Text('ir a actividad',style: TextStyle(color: Colors.white),),
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/videos.jpg'),
+                ),
+                title: Text(
+                  'Ver Videos',
+                  style: TextStyle(color: Colors.white),
+                ),
+                subtitle: Text(
+                  'ir a actividad',
+                  style: TextStyle(color: Colors.white),
+                ),
                 trailing: Icon(Icons.play_circle, color: Colors.white),
                 onTap: () {
                   Navigator.push(
@@ -177,9 +210,17 @@ class _MenuTemaState extends State<MenuTema> {
               ),
               ListTile(
                 //leading: Icon(Icons.quiz, color: Colors.white),
-                leading: CircleAvatar(backgroundImage: AssetImage('assets/images/box.png'),),
-                title: Text('Memorama', style: TextStyle(color: Colors.white),),
-                subtitle: Text('ir a actividad',style: TextStyle(color: Colors.white),),
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/box.png'),
+                ),
+                title: Text(
+                  'Memorama',
+                  style: TextStyle(color: Colors.white),
+                ),
+                subtitle: Text(
+                  'ir a actividad',
+                  style: TextStyle(color: Colors.white),
+                ),
                 trailing: Icon(Icons.quiz, color: Colors.white),
                 onTap: () {
                   if (idTem.isNotEmpty) {
@@ -187,7 +228,6 @@ class _MenuTemaState extends State<MenuTema> {
                       Navigator.pushNamed(context, 'game', arguments: {
                         'level': value['Nombre'].toString(),
                         'id': idTem,
-
                       });
                     });
                   }
@@ -195,9 +235,17 @@ class _MenuTemaState extends State<MenuTema> {
               ),
               ListTile(
                 //leading: Icon(Icons.man, color: Colors.white),
-                leading: CircleAvatar(backgroundImage: AssetImage('assets/images/hang.png'),),
-                title: Text('Hangman', style: TextStyle(color: Colors.white),),
-                subtitle: Text('ir a actividad',style: TextStyle(color: Colors.white),),
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/hang.png'),
+                ),
+                title: Text(
+                  'Hangman',
+                  style: TextStyle(color: Colors.white),
+                ),
+                subtitle: Text(
+                  'ir a actividad',
+                  style: TextStyle(color: Colors.white),
+                ),
                 trailing: Icon(Icons.man, color: Colors.white),
                 onTap: () {
                   if (idTem.isNotEmpty) {
@@ -217,35 +265,63 @@ class _MenuTemaState extends State<MenuTema> {
               ),
               ListTile(
                 //leading: Icon(Icons.question_mark, color: Colors.white),
-                leading: CircleAvatar(backgroundImage: AssetImage('assets/images/descarga.jpg'),),
-                title: Text('Quiz', style: TextStyle(color: Colors.white),),
-                subtitle: Text('ir a actividad',style: TextStyle(color: Colors.white),),
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/descarga.jpg'),
+                ),
+                title: Text(
+                  'Quiz',
+                  style: TextStyle(color: Colors.white),
+                ),
+                subtitle: Text(
+                  'ir a actividad',
+                  style: TextStyle(color: Colors.white),
+                ),
                 trailing: Icon(Icons.question_mark, color: Colors.white),
                 onTap: () {
                   if (idTem.isNotEmpty) {
                     temas.doc(idTem).get().then((value) {
                       if (value['Nombre'] == 'Colores') {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                            ColoreQuizHome
-                              (idTem: idTem, Tem: value['Nombre'].toString(),),),
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ColoreQuizHome(
+                              idTem: idTem,
+                              Tem: value['Nombre'].toString(),
+                            ),
+                          ),
                         );
                       }
                       if (value['Nombre'] == 'Números') {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                            NumerosHomePage
-                              (idTem: idTem, Tem: value['Nombre'].toString(),),),
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => NumerosHomePage(
+                              idTem: idTem,
+                              Tem: value['Nombre'].toString(),
+                            ),
+                          ),
                         );
                       }
                       if (value['Nombre'] == 'Abecedario') {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                            AbecedarioHomePage
-                              (idTem: idTem, Tem: value['Nombre'].toString(),),),
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AbecedarioHomePage(
+                              idTem: idTem,
+                              Tem: value['Nombre'].toString(),
+                            ),
+                          ),
                         );
                       }
                       if (value['Nombre'] == 'Verbo to be') {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                            TobeHomePage
-                              (idTem: idTem, Tem: value['Nombre'].toString(),),),
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => TobeHomePage(
+                              idTem: idTem,
+                              Tem: value['Nombre'].toString(),
+                            ),
+                          ),
                         );
                       }
                     });
@@ -257,6 +333,6 @@ class _MenuTemaState extends State<MenuTema> {
         ),
       ),
     );
-    return const Placeholder();
+    //return const Placeholder();
   }
 }
