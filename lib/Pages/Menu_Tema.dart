@@ -97,7 +97,7 @@ class _MenuTemaState extends State<MenuTema> {
             ),
             ListTile(
               leading: Icon(Icons.man),
-              title: Text("Hangman"),
+              title: Text("Adivina la Palabra"),
               onTap: () {
                 if (idTem.isNotEmpty) {
                   temas.doc(idTem).get().then((value) {
@@ -236,10 +236,10 @@ class _MenuTemaState extends State<MenuTema> {
               ListTile(
                 //leading: Icon(Icons.man, color: Colors.white),
                 leading: CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/hang.png'),
+                  backgroundImage: AssetImage('assets/images/'),
                 ),
                 title: Text(
-                  'Hangman',
+                  'Adivina la Palabra',
                   style: TextStyle(color: Colors.white),
                 ),
                 subtitle: Text(

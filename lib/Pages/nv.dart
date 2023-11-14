@@ -1,9 +1,9 @@
 import 'dart:math';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ing/Pages/ui/colors.dart';
+//import 'package:ing/Pages/ui/colors.dart';
 import 'package:ing/Pages/ui/widget/figure_image.dart';
 import 'package:ing/Pages/ui/widget/letter.dart';
 import 'package:ing/Pages/utils/game.dart';
@@ -139,7 +139,7 @@ class _nvState extends State<nv> {
                   //let's add the images to the asset folder
                   //Okey now we will create a Game class
                   //Now the figure will be built according to the number of tries
-                  figureImage(Game.tries >= 0, "assets/images/hang.png"),
+                  //figureImage(Game.tries >= 0, "assets/images/hang.png"),
                   figureImage(Game.tries >= 1, "assets/images/head.png"),
                   figureImage(Game.tries >= 2, "assets/images/body.png"),
                   figureImage(Game.tries >= 3, "assets/images/ra.png"),

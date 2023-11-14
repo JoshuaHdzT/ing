@@ -1,13 +1,13 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ing/Login/signin_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'package:secappen/HomePage/homePage.dart';
 
-import '../reusable_widgets/reusable_widget.dart';
+
 import '../utils/color_utils.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -24,6 +24,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _emailTextController = TextEditingController();
   TextEditingController _passwordTextController = TextEditingController();
   final firebase = FirebaseFirestore.instance;
+  String? validateMyInput(String value) {
+    // Expresión regular para validar números enteros o decimales
+    String pattern = r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$';
+    RegExp regex = RegExp(pattern);
+
+    if (!regex.hasMatch(value)) {
+      return 'Ingresa un correo válido';
+    }
+
+    return null; // La entrada es válida
+  }
 
   registroUser() async {
     try {
@@ -69,9 +80,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
-              hexStringToColor("CB2B93"),
-              hexStringToColor("9546C4"),
-              hexStringToColor("5E61F4")
+          hexStringToColor("CB2B93"),
+          hexStringToColor("9546C4"),
+          hexStringToColor("5E61F4")
         ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
         child: SingleChildScrollView(
           child: Form(
@@ -90,15 +101,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: TextStyle(color: Colors.white),
                       controller: _nameTextController,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10)),
-                        labelText: 'User',
-                        hintText: 'Digite su usuario',
-                        fillColor: Colors.white
-                      ),
-                      validator: (value){
-                        if(value == ""){
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10)),
+                          labelText: 'User',
+                          hintText: 'Digite su usuario',
+                          fillColor: Colors.white),
+                      validator: (value) {
+                        if (value == "") {
                           return "Este campo es obligatorio";
                         }
                         return null;
@@ -118,11 +128,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         hintText: 'Digite su grupo',
                         fillColor: Colors.white,
                       ),
-                      validator: (value){
-                        if(value == ""){
-                          return "Este campo es obligatorio";}
+                      validator: (value) {
+                        if (value == "") {
+                          return "Este campo es obligatorio";
+                        }
                         return null;
-                      },),),
+                      },
+                    ),
+                  ),
                   Padding(
                     padding: EdgeInsets.all(20),
                     child: TextFormField(
@@ -136,11 +149,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         hintText: 'Digite su Email',
                         fillColor: Colors.white,
                       ),
-                      validator: (value){
-                        if(value == ""){
-                          return "Este campo es obligatorio";
-                        }
-                        return null;
+                      validator: (value) {
+                        String? validatedInput = validateMyInput(value!);
+                        return validatedInput;
                       },
                     ),
                   ),
@@ -155,12 +166,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             borderRadius: BorderRadius.circular(10)),
                         labelText: 'Password',
                         hintText: 'Digite su password',
-                        fillColor: Colors.white,),
-                      validator: (value){
-                        if(value == ""){
-                          return "Este campo es obligatorio";}
+                        fillColor: Colors.white,
+                      ),
+                      validator: (value) {
+                        if (value!.length <= 8) {
+                          return "Minimo 8 caracteres";
+                        }
+                        if (value == "") {
+                          return "Este campo es obligatorio";
+                        }
                         return null;
-                      },),),
+                      },
+                    ),
+                  ),
                   Padding(
                     padding: EdgeInsets.only(left: 20, top: 50, right: 10),
                     child: Center(
@@ -170,7 +188,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         pressEvent: () {
                           var isValid = _form.currentState?.validate();
                           if (isValid == null || !isValid) {
-                            return;}
+                            return;
+                          }
                           print('Ingresando');
                           registroUser();
                           _nameTextController.clear();
@@ -209,7 +228,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ],
               ),
             ),
-
           ),
         ),
       ),
